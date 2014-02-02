@@ -1,0 +1,9 @@
+<% styles_non_angular.forEach( function ( file ) { %>
+<link rel="stylesheet" type="text/css" href="/<%= file %>" /><% }); %>
+
+<% scripts_non_angular.forEach( function ( file ) { %>
+<script type="text/javascript" src="/<%= file %>"></script><% }); %>
+
+<% if (livereload) { %>
+<script src="//localhost:35728/livereload.js"></script>
+<% } %>

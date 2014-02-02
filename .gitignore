@@ -1,0 +1,8 @@
+.DS_Store
+.nodemonignore
+node_modules/
+frontend/vendor
+.bower-cache
+.bower-registry
+assets/
+test/coverage/
