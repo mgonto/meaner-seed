@@ -34,16 +34,15 @@ module.exports = {
             '<%= compile_dir %>/app/**/*.js',
             '!<%= app_files.tests %>'
         ],
-        css_vendor_all: [
-            '<%= css_dir %>/bootstrap/dist/css/bootstrap.css',
-            ''
+        css_vendor: [
+            '<%= css_dir %>/bootstrap/dist/css/bootstrap.css'
         ],
         // note that there should be at least 2 elements in array to expansion work
         css_exclude: [
             '',
             ''
         ],
-        css: ['<%= app_files.css_vendor_all %>',
+        css: ['<%= app_files.css_vendor %>',
               '<%= compile_dir %>/app/**/*.css',
               '!{<%= app_files.css_exclude %>}'],
         less: '<%= compile_dir %>/app/**/*.less',
@@ -58,33 +57,24 @@ module.exports = {
 
     vendor_files: {
         // these should be with prefix to preserve order
-        js_vendor_all: [
+        js_all: [
             '<%= lib_dir %>/jquery/jquery.js',
-            '<%= lib_dir %>/lodash/dist/lodash.js'
-        ],
-
-        js_vendor_angular: [
             '<%= lib_dir %>/angular/angular.js',
+            '<%= lib_dir %>/lodash/dist/lodash.js',
             '<%= lib_dir %>/angular-ui-router/release/angular-ui-router.js',
             '<%= lib_dir %>/angular-ui-utils/ui-utils.js',
             '<%= lib_dir %>/restangular/dist/restangular.js',
             
-        ],
-        js_vendor_non_angular: [
-            '<%= lib_dir %>/bootstrap/dist/bootstrap.js',
-            ''
         ],
         // note that there should be at least 2 elements in array to expansion work
         js_exclude: [
             '<%= lib_dir %>/angular-mocks/angular-mocks.js',
             ''
         ],
-        js: ['<%= vendor_files.js_vendor_all %>',
-             '<%= vendor_files.js_vendor_angular %>',
+        js: ['<%= vendor_files.js_all %>',
              '!{<%= vendor_files.js_exclude %>}'],
         js_non_angular: [
-            '<%= vendor_files.js_vendor_all %>',
-            '<%= vendor_files.js_vendor_non_angular %>'
+            '<%= lib_dir %>/bootstrap/dist/bootstrap.js',
         ]
     }
 
