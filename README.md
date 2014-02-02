@@ -21,7 +21,7 @@ So what I did here is to take the both of mean.io and ngBoilerplate, mix it with
 
 # How to use
 
-You can just clone this repository, run `npm install`, `bower install`, `grunt` and you're set to go. After that, the app will be running on `http://localhost:3000`
+You can just clone this repository, run `npm install`, `bower install`, `mongod`, `grunt` and you're set to go. After that, the app will be running on `http://localhost:3000`
 
 # Folder structure
 
@@ -94,3 +94,9 @@ Now, you have to go to the `build.config.js` and locate some properties:
 * `js_vendor_angular`: In this property you need to add the path to each new JS file you want to add from the libraries you chose. After doing this, the script tag will automatically be added by itself in dev and concatenated will other libs on prod **only for angular pages**
 * `js_vendor_non_angular`: In this property you need to add the path to each new JS file you want to add from the libraries you chose. After doing this, the script tag will automatically be added by itself in dev and concatenated will other libs on prod **only for NON angular pages**
 * `css_vendor_all`: In this property you need to add the path to each new CSS file you want to add from the libraries you chose. After doing this, the link tag will automatically be added by itself in dev and concatenated will other libs on prod **for both angular pages and non angular pages**
+
+# TODO (Next steps)
+
+* Make watch only rebuild the part that's needed. If less is changed, then just change less, not everything.
+* Use bower's `main` file to discover what file of the library to add instead of manually adding vendor files
+* Separate CSS and JS files to have CSS on head and JS on body
