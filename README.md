@@ -36,6 +36,8 @@ meaner/
   |  |  |- <backend routes>
   |  |- views/
   |  |  |- <backend views and layouts>
+  |- tests/ 
+  |  |- <Tests for Backend code (Mocha + Supertest)>
   |- assets/
   |  |- <Built / Compiled frontend code: Minified, concatenated, transformed,etc>
   |- config/
@@ -65,13 +67,24 @@ You're going to be using grunt to start/run the application.
 
 Running `grunt` or `grunt watch` will start the application and watch for changes in either Frontend or Backend code. If there's a change, Livereload will reload the entire website. It runs `node` using `nodemon` 
 
-`grunt watch` also takes care of processing frontend code so that it's available to use. It'll create CSS files from Less files, add the `script` and `link` tags to your HTML so that all of your frontned code is linked from the HTML, it'll convert all of your HTML templates to JS using `html2js` so that it doesn't have to do a request to get the templates and much more. You can view all tasks in the `Gruntfile.js`
+`grunt watch` also takes care of processing frontend code so that it's available to use. It'll create CSS files from Less files, add the `script` and `link` tags to your HTML so that all of your frontned code is linked from the HTML, it'll convert all of your HTML templates to JS using `html2js` so that it doesn't have to do a request to get the templates and much more. You can view all tasks in the `Gruntfile.js`.
+
+You can use `grunt test` to run all of your backend (mocha + supertest) tests and frontned (karma) tests :). Backend tests are located in `tests/` and frontned test are inside frontend folder with `spec.js` extension.
 
 ## Production
 
 For production, you'll need to run `grunt compile`. Besides doing all the things as `grunt watch`, it'll also minify and concatenate all JS, CSS and less files and change the `script` and `link` tags in your HTML to just this one dependency. This will make your code ready to be deployed.
 
 If you're deploying this to Heroku, I've already configured the [correct buildpack](https://github.com/aquicore/heroku-buildpack-nodejs-grunt) which will take care of all of this once you push.
+
+## Grunt commands
+
+Summing up, the grunt commands are:
+
+* `grunt` or `grunt watch`: Starts NodeJS in Dev mode and creates assets folder from FrontEnd for development (less to css, html2js, etc.). It also has livereload for EVERYTHING.
+* `grunt test`: Tests backend and frontend code
+* `grunt compile`: Prepares your code for production. Does minification, concatenation and changes all scripts and link tags to compiled assets.
+* `grunt heroku`: Prepares your env for heroku.
 
 # Adding your code
 
