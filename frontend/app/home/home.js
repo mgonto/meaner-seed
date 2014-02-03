@@ -8,7 +8,7 @@ angular.module( 'meaner.home', [
  * this way makes each module more "self-contained".
  */
 .config(function config( $stateProvider ) {
-  $stateProvider.state( 'main.home', {
+  $stateProvider.state( 'app.home', {
     url: '/home',
     templateUrl: 'app/home/home.tpl.html',
     controller: 'HomeCtrl'

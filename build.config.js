@@ -12,7 +12,7 @@ module.exports = {
     less_compiled: '<%= compile_dir %>/less.css',
     less_compiled_na: '<%= compile_dir %>/less_na.css',
 
-    css_dir: '<%= compile_dir %>/vendor',
+    css_dir: '<%= compile_dir %>/styles',
     lib_dir: '<%= compile_dir %>/vendor',
 
     test_files: {
@@ -35,7 +35,7 @@ module.exports = {
             '!<%= app_files.tests %>'
         ],
         css_vendor_all: [
-            '<%= css_dir %>/bootstrap/dist/css/bootstrap.css'
+            '<%= lib_dir %>/bootstrap/dist/css/bootstrap.css'
         ],
         // note that there should be at least 2 elements in array to expansion work
         css_exclude: [
@@ -47,8 +47,9 @@ module.exports = {
               '!{<%= app_files.css_exclude %>}'],
         less: '<%= compile_dir %>/app/**/*.less',
         css_non_angular: [
-            '<%= css_dir %>/bootstrap/dist/css/bootstrap.css',
-            '<%= compile_dir %>/app/main.less'
+            '<%= lib_dir %>/bootstrap/dist/css/bootstrap.css',
+            '<%= compile_dir %>/app/main.less',
+            '<%= css_dir %>/index.less'
         ],
         tpl: ['<%= compile_dir %>/app/**/*.tpl.html']
     },

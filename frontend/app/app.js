@@ -5,8 +5,8 @@ angular.module( 'meaner', [
 ])
 
 .config( function myAppConfig ( $stateProvider, $locationProvider) {
-  $stateProvider.state( 'main', {
-    url: '/articles/angular',
+  $stateProvider.state( 'app', {
+    url: '/app',
     template: '<div ui-view></div>',
     abstract: true,
     controller: 'AppCtrl'

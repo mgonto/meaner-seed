@@ -241,7 +241,8 @@ module.exports = function(grunt) {
                     extensions: ['js', 'css', 'html', 'less']
                 },
                 dirs: [
-                    '<%= src_dir %>/app/**/'
+                    '<%= src_dir %>/app/**/',
+                    '<%= css_dir %>/**/'
                 ]
             },
             '*': function() { return ['build'] }
