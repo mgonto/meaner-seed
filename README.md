@@ -114,6 +114,7 @@ Now, you have to go to the `build.config.js` and locate some properties:
 
 * Make watch only rebuild the part that's needed. If less is changed, then just change less, not everything.
 * Use bower's `main` file to discover what file of the library to add instead of manually adding vendor files
+* Update to `gulp`
 * Separate CSS and JS files to have CSS on head and JS on body
 
 # License
