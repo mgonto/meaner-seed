@@ -293,7 +293,19 @@ module.exports = function(grunt) {
               autoWatch: false,
               configFile: 'karma.unit.js'
             }
-        }
+        },
+        mochaTest: {
+            options: {
+                reporter: 'spec',
+                require: 'server.js'
+            },
+            src: ['test/**/*.js']
+        },
+        env: {
+            test: {
+                NODE_ENV: 'test'
+            }
+        },
     }
 
     grunt.initConfig( grunt.util._.extend( taskConfig, userConfig ) );
@@ -302,9 +314,8 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['watch']);
 
     // Build task.
-    grunt.registerTask('test', ['build', 'karmaconfig', 'karma:unit']);
-    grunt.registerTask('test-e2e', ['build', 'karma:e2e']);
-    grunt.registerTask('ci', ['build', 'karmaconfig', 'karma:unit-ci', 'karma:e2e-ci']);
+    grunt.registerTask('test', ['env:test', 'mochaTest', 'build', 'karmaconfig', 'karma:unit']);
+    grunt.registerTask('ci', ['env:test', 'mochaTest', 'build', 'karmaconfig', 'karma:unit-ci']);
 
     grunt.registerTask('watch', ['build', 'concurrent']);
     grunt.registerTask('heroku', 'compile');

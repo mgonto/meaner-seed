@@ -5,32 +5,17 @@
  */
 var should = require('should'),
     mongoose = require('mongoose'),
-    User = mongoose.model('User'),
     Article = mongoose.model('Article');
 
 //Globals
-var user;
 var article;
 
 //The tests
 describe('<Unit Test>', function() {
     describe('Model Article:', function() {
-        beforeEach(function(done) {
-            user = new User({
-                name: 'Full name',
-                email: 'test@test.com',
-                username: 'user',
-                password: 'password'
-            });
-
-            user.save(function() {
-                article = new Article({
-                    title: 'Article Title',
-                    content: 'Article Content',
-                    user: user
-                });
-
-                done();
+        beforeEach(function() {
+            article = new Article({
+                title: 'Article Title',
             });
         });
 
@@ -54,12 +39,10 @@ describe('<Unit Test>', function() {
 
         afterEach(function(done) {
             Article.remove({});
-            User.remove({});
             done();
         });
         after(function(done) {
             Article.remove().exec();
-            User.remove().exec();
             done();
         });
     });
