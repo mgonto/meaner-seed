@@ -7,7 +7,8 @@ var express = require('express'),
     flash = require('connect-flash'),
     helpers = require('view-helpers'),
     config = require('./config'),
-    redirect = require("express-redirect");
+    redirect = require("express-redirect"),
+    swig = require("swig");
 
 module.exports = function(app, db) {
     app.set('showStackError', true);
@@ -33,7 +34,17 @@ module.exports = function(app, db) {
 
     // Set views path, template engine and default layout
     app.set('views', config.root + '/app/views');
-    app.set('view engine', 'jade');
+    
+    // This is where all the magic happens!
+    app.engine('html', swig.renderFile);
+
+    app.set('view engine', 'html');
+    
+    // Swig will cache templates for you, but you can disable
+    // that and use Express's caching instead, if you like:
+    app.set('view cache', config.cacheTemplates);
+    // To disable Swig's cache, do the following:
+    swig.setDefaults({ cache: config.cacheTemplates });
 
     redirect(app);
 
