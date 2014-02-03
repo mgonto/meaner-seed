@@ -1,6 +1,6 @@
 # MEANER seed
 
-This is a MEAN (Mongo, Express, AngularJS, Node) seed recharged. This is partly based on [mean.io](https://github.com/linnovate/mean) and [ngBoilerplate](https://github.com/ngbp/ngbp) which are 2 great seeds projects for mean and angularjs. 
+This is a MEAN (Mongo, Express, AngularJS, Node) seed enhanced & recharged (MEANER). This is partly based on [mean.io](https://github.com/linnovate/mean) and [ngBoilerplate](https://github.com/ngbp/ngbp) which are 2 great seeds projects for mean and angularjs. 
 
 **This is still a work in progress. I'm using it now for a personal project and I'll keep improving it while I use it**.
 
