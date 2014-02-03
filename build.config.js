@@ -49,7 +49,7 @@ module.exports = {
         css_non_angular: [
             '<%= lib_dir %>/bootstrap/dist/css/bootstrap.css',
             '<%= compile_dir %>/app/main.less',
-            '<%= css_dir %>/index.less'
+            '<%= css_dir %>/**/*.less'
         ],
         tpl: ['<%= compile_dir %>/app/**/*.tpl.html']
     },

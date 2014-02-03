@@ -41,11 +41,13 @@ meaner/
   |- config/
   |- frontend/
   |  |- app/
-  |  |  |- <all Angular apps (if many) or just one>
+  |  |  |- <all Angular apps code including JS, tests, Less>
   |  |- common/
   |  |  |- <all Angular code that is reusable (Services, Directives)>
   |  |- vendor/
   |  |  |- <Front end dependencies installed via bower>
+  |  |- styles/
+  |  |  |- <Less files to be used for non angular apps>
   |- .bowerrc
   |- bower.json
   |- build.config.js
