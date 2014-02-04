@@ -49,7 +49,9 @@ meaner/
   |  |- vendor/
   |  |  |- <Front end dependencies installed via bower>
   |  |- styles/
-  |  |  |- <Less files to be used for non angular apps>
+  |  |  |- <Less files to be used for non angular apps (except for shared)>
+  |  |  |- shared/
+  |  |  |  |- <All less files to be used in Angular app and Static app>
   |- .bowerrc
   |- bower.json
   |- build.config.js
