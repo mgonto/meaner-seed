@@ -117,6 +117,9 @@ Now, you have to go to the `build.config.js` and locate some properties:
 * `js_vendor_angular`: In this property you need to add the path to each new JS file you want to add from the libraries you chose. After doing this, the script tag will automatically be added by itself in dev and concatenated will other libs on prod **only for angular pages**
 * `js_vendor_non_angular`: In this property you need to add the path to each new JS file you want to add from the libraries you chose. After doing this, the script tag will automatically be added by itself in dev and concatenated will other libs on prod **only for NON angular pages**
 * `css_vendor_all`: In this property you need to add the path to each new CSS file you want to add from the libraries you chose. After doing this, the link tag will automatically be added by itself in dev and concatenated will other libs on prod **for both angular pages and non angular pages**
+* `css_vendor_angular`: In this property you need to add the path to each new CSS file you want to add from the libraries you chose. After doing this, the link tag will automatically be added by itself in dev and concatenated will other libs on prod **only for angular pages**
+* `css_vendor_non_angular`: In this property you need to add the path to each new CSS file you want to add from the libraries you chose. After doing this, the link tag will automatically be added by itself in dev and concatenated will other libs on prod **only for NON angular pages**
+
 
 # TODO (Next steps)
 
