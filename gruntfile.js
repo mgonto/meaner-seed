@@ -52,9 +52,13 @@ module.exports = function(grunt) {
         // build less index
         less_index: {
             index: {
-                src: '<%= app_files.less %>',
+                src: '<%= app_files.less_angular %>',
                 dest: '<%= compile_dir %>/index.less'
-            }
+            },
+            index_non_angular: {
+                src: '<%= app_files.less_non_angular %>',
+                dest: '<%= compile_dir %>/index-na.less'
+            },
         },
 
         // compile less, for production also concat & minify css
@@ -68,30 +72,33 @@ module.exports = function(grunt) {
                 src: '<%= less_index.index.dest %>',
                 dest: '<%= less_compiled %>'
             },
-            dist: {
-                options: {
-                    cleancss: true
-                },
-                src: [
-                    '<%= app_files.css %>',
-                    '<%= less_index.index.dest %>'
-                ],
-                dest: '<%= compile_dir %>/<%= pkg.name %>-' + ts + '.css'
-            },
-            non_angular_build: {
+            build_non_angular: {
                 options: {
                     sourceMap: true,
                     sourceMapFilename: '<%= less_compiled_na %>.map',
                     sourceMapRootpath: '<%= server %>'
                 },
-                src: '<%= app_files.less_non_angular %>',
+                src: '<%= less_index.index_non_angular.dest %>',
                 dest: '<%= less_compiled_na %>'
             },
-            non_angular: {
+            dist: {
                 options: {
                     cleancss: true
                 },
-                src: '<%= app_files.less_non_angular %>',
+                src: [
+                    '<%= vendor_files.css %>',
+                    '<%= less_index.index.dest %>'
+                ],
+                dest: '<%= compile_dir %>/<%= pkg.name %>-' + ts + '.css'
+            },
+            dist_non_angular: {
+                options: {
+                    cleancss: true
+                },
+                src: [
+                    '<%= vendor_files.css_non_angular %>',
+                    '<%= less_index.index_non_angular.dest %>'
+                ],
                 dest: '<%= compile_dir %>/<%= pkg.name %>-na-' + ts + '.css'
             }
         },
@@ -125,7 +132,7 @@ module.exports = function(grunt) {
                         '<%= vendor_files.js %>',
                         '<%= app_files.js %>',
                         '<%= templates_file %>',
-                        '<%= app_files.css %>',
+                        '<%= vendor_files.css %>',
                         '<%= less_compiled %>'
                     ]
                 }, {
@@ -134,7 +141,8 @@ module.exports = function(grunt) {
                     },
                     src: [
                         '<%= vendor_files.js_non_angular %>',
-                        '<%= less.non_angular_build.dest %>'
+                        '<%= vendor_files.css_non_angular %>',
+                        '<%= less_compiled_na %>'
                     ]
                 }]
             },
@@ -156,7 +164,7 @@ module.exports = function(grunt) {
                         non_angular: true
                     },
                     src: [
-                        '<%= less.non_angular.dest %>',
+                        '<%= less.dist_non_angular.dest %>',
                         '<%= concat.lib_non_angular.dest %>'
                     ]
                 }]
@@ -180,7 +188,10 @@ module.exports = function(grunt) {
                     staticRoot: 'assets'
                 },
                 expand: true,
-                src: '<%= app_files.css %>'
+                src: [
+                    '<%= vendor_files.css %>',
+                    '<%= vendor_files.css_non_angular %>'
+                ]
             }
         },
 
@@ -253,7 +264,7 @@ module.exports = function(grunt) {
                     file: 'server.js',
                     args: [],
                     ignoredFiles: ['assets/**'],
-                    watchedExtensions: ['js', 'jade'],
+                    watchedExtensions: ['js'],
                     nodeArgs: ['--debug'],
                     delayTime: 1,
                     env: {
@@ -407,7 +418,7 @@ module.exports = function(grunt) {
         'copy',
         'less_index',
         'less:build',
-        'less:non_angular_build',
+        'less:build_non_angular',
         'html2js',
         'index:build'
     ]);
@@ -420,7 +431,7 @@ module.exports = function(grunt) {
         'css_url_replace',
         'less_index',
         'less:dist',
-        'less:non_angular',
+        'less:dist_non_angular',
         'concat',
         'uglify',
         'index:compile',

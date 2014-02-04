@@ -35,24 +35,15 @@ module.exports = {
             '!<%= app_files.tests %>'
         ],
 
-        less_vendor_all: [
-            '<%= compile_dir %>/styles/shared/**/*.less'
-        ],
-
-        css: [
-            '<%= compile_dir %>/app/**/*.css',
-        ],
-
-        less: [
-            '<%= app_files.less_vendor_all %>',
+        less_angular: [
+            '<%= css_dir %>/shared/**/*.less',
             '<%= compile_dir %>/app/**/*.less'
         ],
 
         less_non_angular: [
-            '<%= app_files.less_vendor_all %>',
-            '<%= css_dir %>/**/*.less',
-            '!{<%= compile_dir %>/app/**/*.less}'
+            '<%= css_dir %>/**/*.less'
         ],
+
         tpl: ['<%= compile_dir %>/app/**/*.tpl.html']
     },
 
@@ -64,29 +55,57 @@ module.exports = {
             '<%= lib_dir %>/jquery/jquery.js',
             '<%= lib_dir %>/lodash/dist/lodash.js'
         ],
+
         js_vendor_angular: [
             '<%= lib_dir %>/angular/angular.js',
             '<%= lib_dir %>/angular-ui-router/release/angular-ui-router.js',
             '<%= lib_dir %>/angular-ui-utils/ui-utils.js',
             '<%= lib_dir %>/restangular/dist/restangular.js'    
         ],
+
         js_vendor_non_angular: [
             '<%= lib_dir %>/bootstrap/dist/bootstrap.js'
+        ],
+
+        css_vendor_all: [
+            '<%= lib_dir %>/bootstrap/dist/css/bootstrap.css'
+        ],
+
+        css_vendor_angular: [
+            '',
+            ''
+        ],
+
+        css_vendor_non_angular: [
+            '',
+            ''
         ],
         // note that there should be at least 2 elements in array to expansion work
         js_exclude: [
             '<%= lib_dir %>/angular-mocks/angular-mocks.js',
             ''
         ],
+
         js: [
             '<%= vendor_files.js_vendor_all %>',
              '<%= vendor_files.js_vendor_angular %>',
              '!{<%= vendor_files.js_exclude %>}'
         ],
+
         js_non_angular: [
             '<%= vendor_files.js_vendor_all %>',
              '<%= vendor_files.js_vendor_non_angular %>',
              '!{<%= vendor_files.js_exclude %>}'
+        ],
+
+        css: [
+            '<%= vendor_files.css_vendor_all %>',
+             '<%= vendor_files.css_vendor_angular %>'
+        ],
+
+        css_non_angular: [
+             '<%= vendor_files.css_vendor_all %>',
+             '<%= vendor_files.css_vendor_angular %>'
         ]
     }
 
