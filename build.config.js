@@ -72,13 +72,11 @@ module.exports = {
         ],
 
         css_vendor_angular: [
-            '',
-            ''
+
         ],
 
         css_vendor_non_angular: [
-            '',
-            ''
+
         ],
         // note that there should be at least 2 elements in array to expansion work
         js_exclude: [
@@ -105,7 +103,7 @@ module.exports = {
 
         css_non_angular: [
              '<%= vendor_files.css_vendor_all %>',
-             '<%= vendor_files.css_vendor_angular %>'
+             '<%= vendor_files.css_vendor_non_angular %>'
         ]
     }
 
