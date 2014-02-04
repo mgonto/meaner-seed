@@ -34,22 +34,24 @@ module.exports = {
             '<%= compile_dir %>/app/**/*.js',
             '!<%= app_files.tests %>'
         ],
-        css_vendor_all: [
-            '<%= lib_dir %>/bootstrap/dist/css/bootstrap.css'
+
+        less_vendor_all: [
+            '<%= compile_dir %>/styles/shared/**/*.less'
         ],
-        // note that there should be at least 2 elements in array to expansion work
-        css_exclude: [
-            '',
-            ''
+
+        css: [
+            '<%= compile_dir %>/app/**/*.css',
         ],
-        css: ['<%= app_files.css_vendor_all %>',
-              '<%= compile_dir %>/app/**/*.css',
-              '!{<%= app_files.css_exclude %>}'],
-        less: '<%= compile_dir %>/app/**/*.less',
-        css_non_angular: [
-            '<%= lib_dir %>/bootstrap/dist/css/bootstrap.css',
-            '<%= compile_dir %>/app/main.less',
-            '<%= css_dir %>/**/*.less'
+
+        less: [
+            '<%= app_files.less_vendor_all %>',
+            '<%= compile_dir %>/app/**/*.less'
+        ],
+
+        less_non_angular: [
+            '<%= app_files.less_vendor_all %>',
+            '<%= css_dir %>/**/*.less',
+            '!{<%= compile_dir %>/app/**/*.less}'
         ],
         tpl: ['<%= compile_dir %>/app/**/*.tpl.html']
     },

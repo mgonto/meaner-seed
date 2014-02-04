@@ -84,14 +84,14 @@ module.exports = function(grunt) {
                     sourceMapFilename: '<%= less_compiled_na %>.map',
                     sourceMapRootpath: '<%= server %>'
                 },
-                src: '<%= app_files.css_non_angular %>',
+                src: '<%= app_files.less_non_angular %>',
                 dest: '<%= less_compiled_na %>'
             },
             non_angular: {
                 options: {
                     cleancss: true
                 },
-                src: '<%= app_files.css_non_angular %>',
+                src: '<%= app_files.less_non_angular %>',
                 dest: '<%= compile_dir %>/<%= pkg.name %>-na-' + ts + '.css'
             }
         },
