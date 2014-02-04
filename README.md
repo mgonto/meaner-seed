@@ -97,6 +97,12 @@ Now, it's time to code. So, where do we start? A few tips on places to look and 
 * You need to create a view. Here, you can inherit from either defaultServer or defaultSPA. If you want this page to have Angular and use Angular stuff, inherit from defaultSPA. You'll see examples of both things in this seed project
 * If you chose an AngularApp, you need to set the `ng-app` in your template and then you can create that app in Frontend. If you'll just have one main Angular app, just add it inside `/frontend/app` otherwise, I'd recommend creating a folder for each.
 
+The main idea here is to let people have "multiple SPAs". I don't like having just one SPA where if the user changes the URL, we change absolutely everything he's watching on Client side. So, what you can do here, is to actually have multiple SPAs at different URLs. So let's see an example:
+
+You could have a `/user/*` spa where we'd show all user settings. All that page with its tabs, and everything will be Angular code. But, if you click on the Accounts button for example, it'll send you to a different server page which is mapped to `/accounts/*` which will be another SPA for all account related stuff. 
+
+I  like this way of ordering code. However, if you prefer just ONE main SPA and that's it, you can easily do that with this meaner-seed as well :). All you will do is to actually map `/app/*` to the Angular app and then just have everything in there. And then, you'd have a server rendered page on `/` maybe which is the only page outside of Angular. That way, you'd just have 2 views, one would inherit from `defaultSPA` and one from `defaultServer`. I hope that this explanation is clear, otherwise PLEASE create an issue and I'll try to explain this better :). 
+
 With those steps, you're ready to go to add your code
 
 ## Adding frontend dependencies
